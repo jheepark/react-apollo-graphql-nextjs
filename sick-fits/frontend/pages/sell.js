@@ -1,8 +1,7 @@
-// import React from 'react'; <-- dont need to do this as next.js looks after this
-
+import CreateItem from '../components/CreateItem';
 const Sell = props => (
 	<div>
-		<p>Sell!</p>
+		<CreateItem />
 	</div>
 )
 

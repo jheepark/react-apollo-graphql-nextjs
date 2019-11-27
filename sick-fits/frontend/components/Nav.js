@@ -2,7 +2,7 @@ import Link from 'next/link';
 import NavStyles from './styles/NavStyles';
 
 const navItems = [
-	{link:'/items', title:'Items'},
+	{link:'/items', title:'Shop'},
 	{ link: '/sell', title: 'Sell' },
 	{ link: '/signup', title: 'Signup' },
 	{ link: '/orders', title: 'Orders' },
