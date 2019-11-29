@@ -64,7 +64,10 @@ class CreateItem extends React.Component {
 
 	render() {
 		return (
-      <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
+			<Mutation
+				mutation={CREATE_ITEM_MUTATION}
+				variables={this.state}
+			>
         {(createItem, { loading, error }) => (
           <Form
             onSubmit={ async e => {
@@ -133,7 +136,7 @@ class CreateItem extends React.Component {
             </fieldset>
           </Form>
         )}
-      </Mutation>
+      </Mutationmutation={CREATE_ITEM_MUTATION}>
     );
 	}
 }
