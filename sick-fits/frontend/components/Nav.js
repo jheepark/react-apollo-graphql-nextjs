@@ -1,34 +1,46 @@
 import Link from 'next/link';
 import NavStyles from './styles/NavStyles';
 import User from './User';
+import Signout from './Signout';
 
 const navItems = [
-	{link:'/items', title:'Shop'},
-	{ link: '/sell', title: 'Sell' },
-	{ link: '/signup', title: 'Signup' },
-	{ link: '/orders', title: 'Orders' },
-	{ link: '/account', title: 'My Account' },
+  { link: "/items", title: "Shop", autoShow: true },
+  { link: "/sell", title: "Sell", autoShow: false },
+  { link: "/orders", title: "Orders", autoShow: false },
+  { link: "/account", title: "My Account", autoShow: false },
+	{ link: "/signup", title: "SignIn", autoShow: true }
 ];
 
 const Nav = () => {
 
-	const links = navItems.map((item) => (
-		<Link href={item.link} key={item.title}>
-			<a>{item.title}</a>
-		</Link>
-	));
+	const links = isSignIn => (
+		navItems.map(item => {
+			if(!isSignIn) {
+				if(!!item.autoShow) {
+					return (
+						<Link href={item.link} key={item.title}>
+							<a>{item.title}</a>
+						</Link>
+					)
+				}
+				return null;
+			}
+			return (
+				<Link href={item.link} key={item.title}>
+					<a>{item.title}</a>
+				</Link>
+			)
+		}));
 
 	return (
-		<NavStyles>
-			<User>
-				{({data: {me}}) => {
-					console.log(me)
-					if(me) return<p>{me.name}</p>
-					return null
-				}}
+		<User>
+			{({data: {me}}) => (
+				<NavStyles>
+					{links(me)}
+					{me && <Signout />}
+				</NavStyles>
+			)}
 			</User>
-			{links}
-		</NavStyles>
 
 	)
 };
